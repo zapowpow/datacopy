@@ -12,7 +12,7 @@ import com.lzp.mysql.source.unit.TimestampDeserializer;
 public class Meters {
     private Long meterId;
     private String meterName;
-    private String meterAlTmr;
+    private String meterAlias;
     private Long measId;
     private Short meterSerial;
     private Integer meterNo;
@@ -198,13 +198,13 @@ public class Meters {
         this.meterName = meterName;
     }
 
-    @Column(name = "METER_ALTmr", length = 64)
-    public String getMeterAlTmr() {
-        return this.meterAlTmr;
+    @Column(name = "METER_ALIAS", length = 64)
+    public String getMeterAlias() {
+        return this.meterAlias;
     }
 
-    public void setMeterAlTmr(String meterAlTmr) {
-        this.meterAlTmr = meterAlTmr;
+    public void setMeterAlias(String meterAlias) {
+        this.meterAlias = meterAlias;
     }
 
     @Column(name = "MEAS_ID")
@@ -234,7 +234,7 @@ public class Meters {
         this.meterNo = meterNo;
     }
 
-    @Column(name = "ACQUIRED_ID", nullable = false)
+    @Column(name = "ACQUIRED_ID")
     public Long getAcquiredId() {
         return this.acquiredId;
     }
@@ -1265,8 +1265,8 @@ public class Meters {
      return this.getMeterId();
  }
 
- public String getAlTmrName() {
-     return this.getMeterAlTmr();
+ public String getAliasName() {
+     return this.getMeterAlias();
  }
 
  public String getDescription() {

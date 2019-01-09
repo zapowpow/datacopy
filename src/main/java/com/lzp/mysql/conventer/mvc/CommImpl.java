@@ -44,35 +44,35 @@ public class CommImpl implements CommService {
         }
     }
 
-    @Override
-    public Object save(Object t) {
-        try{
-            return pbsSave(t);
-        }catch (Exception e){
-            return tmrSave(t);
-        }
-    }
-
-    @Override
-    public List<?> save(List<?> ts) {
-        transactionalBegin();
-        for(Object object : ts){
-            try {
-                tmrEntityManager.persist(object);
-            }catch (Exception r){
-                pbsEntityManager.persist(object);
-            }
-        }
-        try {
-            tmrEntityManager.getTransaction().commit();
-            pbsEntityManager.getTransaction().commit();
-            return ts;
-        }catch (Exception e){
-            tmrEntityManager.getTransaction().rollback();
-            pbsEntityManager.getTransaction().rollback();
-            throw e;
-        }
-    }
+//    @Override
+//    public Object save(Object t) {
+//        try{
+//            return pbsSave(t);
+//        }catch (Exception e){
+//            return tmrSave(t);
+//        }
+//    }
+//
+//    @Override
+//    public List<?> save(List<?> ts) {
+//        transactionalBegin();
+//        for(Object object : ts){
+//            try {
+//                tmrEntityManager.persist(object);
+//            }catch (Exception r){
+//                pbsEntityManager.persist(object);
+//            }
+//        }
+//        try {
+//            tmrEntityManager.getTransaction().commit();
+//            pbsEntityManager.getTransaction().commit();
+//            return ts;
+//        }catch (Exception e){
+//            tmrEntityManager.getTransaction().rollback();
+//            pbsEntityManager.getTransaction().rollback();
+//            throw e;
+//        }
+//    }
 
     @Override
     public List<?> findAll(Class t) {
@@ -106,23 +106,23 @@ public class CommImpl implements CommService {
         return m;
     }
 
-    @Override
-    public List<?> pbsSave(List<?> ts) {
-        transactionalBegin();
-        for(Object obj :ts){
-            pbsEntityManager.persist(obj);
-        }
-        pbsEntityManager.getTransaction().commit();
-        return ts;
-    }
-
-    @Override
-    public Object pbsSave(Object t) {
-        transactionalBegin();
-        pbsEntityManager.persist(t);
-        pbsEntityManager.getTransaction().commit();
-        return t;
-    }
+//    @Override
+//    public List<?> pbsSave(List<?> ts) {
+//        transactionalBegin();
+//        for(Object obj :ts){
+//            pbsEntityManager.persist(obj);
+//        }
+//        pbsEntityManager.getTransaction().commit();
+//        return ts;
+//    }
+//
+//    @Override
+//    public Object pbsSave(Object t) {
+//        transactionalBegin();
+//        pbsEntityManager.persist(t);
+//        pbsEntityManager.getTransaction().commit();
+//        return t;
+//    }
 
     @Override
     public List<?> pbsFindAll(Class t) {

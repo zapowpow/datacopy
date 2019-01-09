@@ -64,7 +64,7 @@ public class Dials{
 		this.channelName = channelName;
 	}
 
-	@Column(name = "ACQUIRED_ID", nullable = false)
+	@Column(name = "ACQUIRED_ID")
 	public Long getAcquiredId() {
 		return this.acquiredId;
 	}
@@ -190,7 +190,7 @@ public class Dials{
 		this.pri = pri;
 	}
 	
-	@Column(name = "LAST_SUCCESS_TIME_TAG", nullable = false, length = 19)
+	@Column(name = "LAST_SUCCESS_TIME_TAG", length = 19)
 	public Timestamp getLastSuccessTimeTag() {
 		return lastSuccessTimeTag;
 	}

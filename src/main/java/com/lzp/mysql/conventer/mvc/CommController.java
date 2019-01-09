@@ -24,6 +24,13 @@ public class CommController {
     @Autowired
     public CommService service;
 
+
+    @RequestMapping("findById")
+    public Result findById() {
+        Yc channel =  (Yc)service.findById(Yc.class,(long)105017434);
+        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(), channel);
+    }
+
     @RequestMapping("channel")
     public Result channel() {
         List<Channel> channels = (List<Channel>) service.findAll(Channel.class);
@@ -33,7 +40,7 @@ public class CommController {
             Object[] obj = channelConverter.convert(channel, service);
             objs.addAll(new ArrayList<>(Arrays.asList(obj)));
         }
-        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(), service.save(objs));
+        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(), service.tmrSave(objs));
     }
 
     @RequestMapping("ipFour")
@@ -45,19 +52,19 @@ public class CommController {
             Object[] obj = ipFourConverter.convert(ipFour, service);
             objs.addAll(new ArrayList<>(Arrays.asList(obj)));
         }
-        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(),service.save(objs));
+        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(),service.tmrSave(objs));
     }
 
     @RequestMapping("meter")
     public Result meter() {
-        List<Meter> meters = (List) service.findAll(Meter.class);
+        List<Meter> meters = (List<Meter>) service.findAll(Meter.class);
         List<Object> objs = new ArrayList<>();
         for (Meter meter : meters) {
             Converter<Meter> meterConverter = new MeterConverter();
             Object[] obj = meterConverter.convert(meter, service);
             objs.addAll(new ArrayList<>(Arrays.asList(obj)));
         }
-        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(), service.save(objs));
+        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(), service.tmrSave(objs));
     }
 
     @RequestMapping("pulse")
@@ -69,7 +76,7 @@ public class CommController {
             Object[] obj = meterConverter.convert(pulse, service);
             objs.addAll(new ArrayList<>(Arrays.asList(obj)));
         }
-        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(),service.save(objs));
+        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(),service.tmrSave(objs));
     }
 
     @RequestMapping("termdevice")
@@ -81,7 +88,7 @@ public class CommController {
             Object[] obj = termdeviceConverter.convert(termdevice, service);
             objs.addAll(new ArrayList<>(Arrays.asList(obj)));
         }
-        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(),service.save(objs));
+        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(),service.tmrSave(objs));
     }
 
     @RequestMapping("yc")
@@ -93,6 +100,6 @@ public class CommController {
             Object[] obj = meterConverter.convert(yc, service);
             objs.addAll(new ArrayList<>(Arrays.asList(obj)));
         }
-        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(),service.save(objs));
+        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(),service.tmrSave(objs));
     }
 }

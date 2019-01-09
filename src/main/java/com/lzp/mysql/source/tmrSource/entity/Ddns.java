@@ -59,7 +59,7 @@ public class Ddns{
 		this.channelName = channelName;
 	}
 
-	@Column(name = "ACQUIRED_ID", nullable = false)
+	@Column(name = "ACQUIRED_ID")
 	public Long getAcquiredId() {
 		return this.acquiredId;
 	}

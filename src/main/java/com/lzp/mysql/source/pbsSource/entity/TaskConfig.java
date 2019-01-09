@@ -6,7 +6,7 @@ import javax.persistence.*;
  * TaskConfig entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "taskConfig")
+@Table(name = "task_config")
 public class TaskConfig{
 
 	@Id

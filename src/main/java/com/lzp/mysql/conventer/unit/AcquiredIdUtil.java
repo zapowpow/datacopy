@@ -17,19 +17,21 @@ public class AcquiredIdUtil{
 				List<?> list3 = service.pbsFindBy(Termdevice.class,"terminalId",t.getTerminalId());
 				if(list3 != null && !list3.isEmpty()){
 					Termdevice td = (Termdevice) list3.get(0);
-					List<?> list4 = service.pbsFindBy(TmnlRun.class,"other1Id",td.getTermdeviceId());
-					if(list4 != null && !list4.isEmpty()){
-						TmnlRun tr = (TmnlRun) list4.get(0);
-						List<?> list5 = service.tmrFindBy(Acquireds.class,"acquiredName",tr.getName());
-						if(list5 != null && !list4.isEmpty()){
-							Acquireds a = (Acquireds) list5.get(0);
-							return a.getAcquiredId();
-						}
-					}
+//					List<?> list4 = service.pbsFindBy(TmnlRun.class,"other1Id",td.getTermdeviceId());
+//					if(list4 != null && !list4.isEmpty()){
+//						TmnlRun tr = (TmnlRun) list4.get(0);
+//						List<?> list5 = service.tmrFindBy(Acquireds.class,"acquiredName",tr.getName());
+//						if(list5 != null && !list4.isEmpty()){
+//							Acquireds a = (Acquireds) list5.get(0);
+//							return a.getAcquiredId();
+//						}
+//					}
+					return td.getTermdeviceId();
 				}
+
 			}
 		}
-		return 0l;
+		return null;
 	}
 }
 

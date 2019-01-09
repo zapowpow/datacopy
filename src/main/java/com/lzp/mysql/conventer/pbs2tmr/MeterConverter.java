@@ -42,6 +42,9 @@ public class MeterConverter implements Converter<Meter> {
 		if(meter.getInUseTime()!=null){
 			m.setInUseTime(new Timestamp(meter.getInUseTime()));
 		}
+		if(meter.getSampleAlias()!=null){
+			m.setMeterAlias(meter.getSampleAlias());
+		}
 		// 关联CTPT
 		m.setCt1(meter.getCt1());
 		m.setPt1(meter.getPt1());
@@ -58,11 +61,15 @@ public class MeterConverter implements Converter<Meter> {
 		}
 		if (meter.getTerminalId() != null && meter.getTerminalId() > 0) {
 			// 关联终端
-            String s = service.query("select td.termdeviceId from Termdevice as td where td.terminalId="+meter.getTerminalId()).toString().replace("[","(").replace("]",")");
-			List<?> list = service.query("select t from Acquireds t where t.id in "+s);
-			if (list != null && !list.isEmpty()) {
-				Acquireds t = (Acquireds) list.get(0);
-				m.setAcquiredId(t.getAcquiredId());
+
+			List<Long> termdeviceId = (List<Long>)service.query("select td.termdeviceId from Termdevice as td where td.terminalId="+meter.getTerminalId());
+			String s = termdeviceId.toString().replace("[","(").replace("]",")");
+			if(termdeviceId.size()>0){
+				List<?> list = service.query("select t from Acquireds t where t.id in "+s);
+				if (list != null && !list.isEmpty()) {
+					Acquireds t = (Acquireds) list.get(0);
+					m.setAcquiredId(t.getAcquiredId());
+				}
 			}
 		}
 		return new Object[] { m };

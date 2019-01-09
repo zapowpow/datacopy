@@ -17,8 +17,8 @@ public interface CommService{
      */
     List<?> query(String sql);
     Object findById(Class t, Object id);
-    Object save(Object t);
-    List<?> save(List<?> ts);
+//    Object save(Object t);
+//    List<?> save(List<?> ts);
     List<?> findAll(Class t);
     List<?> findBy(Class t, String column, Object value);
     /**
@@ -26,8 +26,8 @@ public interface CommService{
      */
     List<?> pbsQuery(String sql);
     Object pbsFindById(Class t, Object id);
-    List<?> pbsSave(List<?> ts);
-    Object pbsSave(Object t);
+//    List<?> pbsSave(List<?> ts);
+//    Object pbsSave(Object t);
     List<?> pbsFindAll(Class t);
     List<?> pbsFindBy(Class t, String column, Object value);
 

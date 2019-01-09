@@ -53,7 +53,7 @@ public class Meter{
 	private Long ipTimeTag;
 	private Long ipBaseTimeTag;
 	private Double addBaseRator;
-	private String sampleAlTmr;
+	private String sampleAlias;
 	private Long exchangeDataType;
 	private Short isInUse;
 	private Long inUseTime;
@@ -457,13 +457,13 @@ public class Meter{
 		this.addBaseRator = addBaseRator;
 	}
 
-	@Column(name = "SAMPLE_ALTmr", length = 32)
-	public String getSampleAlTmr() {
-		return this.sampleAlTmr;
+	@Column(name = "SAMPLE_Alias", length = 32)
+	public String getSampleAlias() {
+		return this.sampleAlias;
 	}
 
-	public void setSampleAlTmr(String sampleAlTmr) {
-		this.sampleAlTmr = sampleAlTmr;
+	public void setSampleAlias(String sampleAlias) {
+		this.sampleAlias = sampleAlias;
 	}
 
 	@Column(name = "EXCHANGE_DATA_TYPE", precision = 10)
