@@ -32,6 +32,10 @@ public class CommParam {
     private Short dataBit;
     @Column(name = "TXFIFO", nullable = false, length = 10)
     private Integer txfifo;
+    @Column(name = "RTS_CTS")
+    private Integer rtsCts;
+    @Column(name = "XON_OFF")
+    private Integer xonOff;
 
     public Long getCommParamId() {
         return commParamId;
@@ -103,5 +107,21 @@ public class CommParam {
 
     public void setTxfifo(Integer txfifo) {
         this.txfifo = txfifo;
+    }
+
+    public Integer getRtsCts() {
+        return rtsCts;
+    }
+
+    public void setRtsCts(Integer rtsCts) {
+        this.rtsCts = rtsCts;
+    }
+
+    public Integer getXonOff() {
+        return xonOff;
+    }
+
+    public void setXonOff(Integer xonOff) {
+        this.xonOff = xonOff;
     }
 }

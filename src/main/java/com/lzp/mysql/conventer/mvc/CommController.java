@@ -24,17 +24,6 @@ public class CommController {
     @Autowired
     public CommService service;
 
-    @RequestMapping("add")
-    public Result add(Long id) {
-        Acquireds acquireds = new Acquireds();
-        acquireds.setAcquiredId(id);
-        acquireds.setAcquiredName("1");
-        acquireds.setInitialDelay(1);
-        acquireds.setAcquireInterval(1);
-        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(), service.save(acquireds));
-    }
-
-
     @RequestMapping("channel")
     public Result channel() {
         List<Channel> channels = (List<Channel>) service.findAll(Channel.class);
