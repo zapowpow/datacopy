@@ -2,7 +2,7 @@ package com.lzp.mysql.conventer.mvc;
 
 import com.lzp.mysql.conventer.pbs2tmr.*;
 import com.lzp.mysql.source.pbsSource.entity.*;
-import com.lzp.mysql.source.tmrSource.entity.Acquireds;
+import com.lzp.mysql.source.tmrSource.entity.*;
 import com.lzp.mysql.source.unit.Constant;
 import com.lzp.mysql.source.unit.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,4 +102,69 @@ public class CommController {
         }
         return new Result(Constant.MethodResult.SUCCESS.getMethodResult(),service.tmrSave(objs));
     }
+
+    @RequestMapping("check")
+    public Result copy() {
+//        List<Channel> channels = (List<Channel>) service.findAll(Channel.class);
+//        List<ChannelGroup> channelGroups = (List<ChannelGroup>) service.findAll(ChannelGroup.class);
+//        List<CommParam> commParams = (List<CommParam>) service.findAll(CommParam.class);
+//        List<Factory> factories = (List<Factory>) service.findAll(Factory.class);
+//        List<IpFour> ipFours = (List<IpFour>) service.findAll(IpFour.class);
+//        List<Meter> meters = (List<Meter>) service.findAll(Meter.class);
+//        List<Pulse> pulses = (List<Pulse>) service.findAll(Pulse.class);
+//        List<TaskConfig> taskConfigs = (List<TaskConfig>) service.findAll(TaskConfig.class);
+//        List<Termdevice> termdevices = (List<Termdevice>) service.findAll(Termdevice.class);
+//        List<Terminal> terminals = (List<Terminal>) service.findAll(Terminal.class);
+//        List<Yc> ycs = (List<Yc>) service.findAll(Yc.class);
+
+        String check = "";
+
+        Long pbsTermdevice = (Long) service.getColumn(Termdevice.class);
+        Long acquireds = (Long) service.getColumn(Acquireds.class);
+        Long ertus = (Long) service.getColumn(Ertus.class);
+
+        Long pbsIpFour = (Long) service.getColumn(IpFour.class);
+        Long reactivePulses = (Long) service.getColumn(ReactivePulses.class);
+
+        Long pbsPulse = (Long) service.getColumn(Pulse.class);
+        Long pulses = (Long) service.getColumn(Pulses.class);
+
+        Long pbsYc = (Long) service.getColumn(Yc.class);
+        Long instantaneousValues = (Long)service.getColumn(InstantaneousValues.class);
+
+        Long pbsMeter = (Long) service.getColumn(Meter.class);
+        Long meters = (Long) service.getColumn(Meters.class);
+
+        if(pbsTermdevice==acquireds&&pbsTermdevice==ertus){
+            check=check+"pbsTermdevice:true \n";
+        }else {
+            check=check+"pbsTermdevice:false  \n";
+        }
+
+        if(pbsIpFour==reactivePulses){
+            check=check+"pbsIpFour:true  \n";
+        }else {
+            check=check+"pbsIpFour:false  \n";
+        }
+
+        if(pbsPulse==pulses){
+            check=check+"pbsPulse:true  \n";
+        }else {
+            check=check+"pbsPulse:false  \n";
+        }
+
+        if(pbsYc==instantaneousValues){
+            check=check+"pbsYc:true  \n";
+        }else {
+            check=check+"pbsYc:false  \n";
+        }
+
+        if(pbsMeter==meters){
+            check=check+"pbsMeter:true  \n";
+        }else {
+            check=check+"pbsMeter:false  \n";
+        }
+        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(),check);
+    }
+
 }

@@ -93,6 +93,18 @@ public class CommImpl implements CommService {
     }
 
     @Override
+    public Object getColumn(Class t) {
+        String sql = "select COUNT(n) from "+t.getSimpleName()+" n";
+        try {
+            Query query= (Query) pbsEntityManager.createQuery(sql);
+            return query.getSingleResult();
+        } catch (Exception e) {
+            Query query= (Query) tmrEntityManager.createQuery(sql);
+            return query.getSingleResult();
+        }
+    }
+
+    @Override
     public List<?> pbsQuery(String sql) {
         Query query= (Query) pbsEntityManager.createQuery(sql);
         return query.getResultList();

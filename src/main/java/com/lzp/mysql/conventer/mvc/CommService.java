@@ -21,6 +21,7 @@ public interface CommService{
 //    List<?> save(List<?> ts);
     List<?> findAll(Class t);
     List<?> findBy(Class t, String column, Object value);
+    Object getColumn(Class t);
     /**
      * pbs的接口
      */
