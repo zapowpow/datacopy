@@ -104,7 +104,7 @@ public class CommController {
     }
 
     @RequestMapping("check")
-    public Result copy() {
+    public String check() {
 //        List<Channel> channels = (List<Channel>) service.findAll(Channel.class);
 //        List<ChannelGroup> channelGroups = (List<ChannelGroup>) service.findAll(ChannelGroup.class);
 //        List<CommParam> commParams = (List<CommParam>) service.findAll(CommParam.class);
@@ -135,36 +135,35 @@ public class CommController {
         Long pbsMeter = (Long) service.getColumn(Meter.class);
         Long meters = (Long) service.getColumn(Meters.class);
 
-        if(pbsTermdevice==acquireds&&pbsTermdevice==ertus){
-            check=check+"pbsTermdevice:true \n";
+        if(pbsTermdevice.equals(acquireds)&&pbsTermdevice.equals(ertus)){
+            check=check+"pbsTermdevice:true  </p>";
         }else {
-            check=check+"pbsTermdevice:false  \n";
+            check=check+"pbsTermdevice:"+pbsTermdevice+"-"+acquireds+"-"+ertus+"</p>";
         }
 
-        if(pbsIpFour==reactivePulses){
-            check=check+"pbsIpFour:true  \n";
+        if(pbsIpFour.equals(reactivePulses)){
+            check=check+"pbsIpFour:true </p>";
         }else {
-            check=check+"pbsIpFour:false  \n";
+            check=check+"pbsIpFour:"+pbsIpFour+"-"+reactivePulses+"</p>";
         }
 
-        if(pbsPulse==pulses){
-            check=check+"pbsPulse:true  \n";
+        if(pbsPulse.equals(pulses)){
+            check=check+"pbsPulse:true </p>";
         }else {
-            check=check+"pbsPulse:false  \n";
+            check=check+"pbsPulse:"+pbsPulse+"-"+pulses+"</p>";
         }
 
-        if(pbsYc==instantaneousValues){
-            check=check+"pbsYc:true  \n";
+        if(pbsYc.equals(instantaneousValues)){
+            check=check+"pbsYc:true  </p>";
         }else {
-            check=check+"pbsYc:false  \n";
+            check=check+"pbsYc:"+pbsYc+"-"+instantaneousValues+"</p>";
         }
 
-        if(pbsMeter==meters){
-            check=check+"pbsMeter:true  \n";
+        if(pbsMeter.equals(meters)){
+            check=check+"pbsMeter:true </p>";
         }else {
-            check=check+"pbsMeter:false  \n";
+            check=check+"pbsMeter:"+pbsMeter+"-"+meters+"</p>";
         }
-        return new Result(Constant.MethodResult.SUCCESS.getMethodResult(),check);
+        return check;
     }
-
 }

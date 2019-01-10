@@ -73,11 +73,11 @@ public class PbsConfig {
         jpaProperties.put("hibernate.show_sql", env.getProperty("hibernate.show-sql"));
         jpaProperties.put("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
 //mysql
-        jpaProperties.put("hibernate.hbm2ddl.auto",env.getProperty("hibernate.hbm2ddl.auto"));
+//        jpaProperties.put("hibernate.hbm2ddl.auto",env.getProperty("hibernate.hbm2ddl.auto"));
 
 //oracle
-//        jpaProperties.put("hibernate.ddl-auto", env.getProperty("hibernate.ddl-auto"));
-//        jpaProperties.put("hibernate.dialect", env.getProperty("jpa.database-platform"));
+        jpaProperties.put("hibernate.ddl-auto", env.getProperty("hibernate.ddl-auto"));
+        jpaProperties.put("hibernate.dialect", env.getProperty("jpa.database-platform"));
         factory.setJpaProperties(jpaProperties);
         return factory;
     }

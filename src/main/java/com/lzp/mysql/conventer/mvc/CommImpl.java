@@ -1,11 +1,13 @@
 package com.lzp.mysql.conventer.mvc;
 
+import com.lzp.mysql.source.tmrSource.entity.Acquireds;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
+import java.sql.Connection;
 import java.util.List;
 
 /**

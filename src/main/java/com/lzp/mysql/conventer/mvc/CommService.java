@@ -41,5 +41,4 @@ public interface CommService{
     Object tmrSave(Object t);
     List<?> tmrFindAll(Class t);
     List<?> tmrFindBy(Class t, String column, Object value);
-
 }
