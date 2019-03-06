@@ -61,7 +61,6 @@ public class PbsConfig {
         return new JpaTransactionManager(factory);
     }
 
-
     @Bean
     public LocalContainerEntityManagerFactoryBean pbsEntityManagerFactory() {//5
         LocalContainerEntityManagerFactoryBean factory =
